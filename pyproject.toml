@@ -1,0 +1,57 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "reel-curator"
+version = "0.1.0"
+description = "Local AI-assisted travel video curator for Instagram Reel candidates."
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+authors = [{ name = "Local" }]
+dependencies = [
+  "numpy>=1.26",
+  "opencv-python>=4.9,<5",
+  "pillow>=10.3",
+  "pandas>=2.2",
+  "pydantic>=2.7",
+  "pyyaml>=6.0",
+  "streamlit>=1.36",
+  "tqdm>=4.66",
+  "reportlab>=4.2",
+  "scikit-image>=0.23",
+]
+
+[project.optional-dependencies]
+apple-vision = [
+  "pyobjc-framework-Vision>=10.3",
+  "pyobjc-framework-Quartz>=10.3",
+]
+ai = [
+  "torch>=2.3",
+  "transformers>=4.42",
+  "faiss-cpu>=1.8",
+]
+dev = [
+  "pytest>=8.2",
+  "ruff>=0.5",
+  "mypy>=1.10",
+]
+
+[project.scripts]
+reel-curator = "reel_curator.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/reel_curator"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

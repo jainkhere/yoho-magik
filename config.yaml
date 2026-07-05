@@ -1,0 +1,21 @@
+input_folder: "/Users/kunjain/Movies/Alberta videos"
+cache_dir: ".reel_curator_cache"
+export_dir: "exports"
+workers: 4
+sample_frames: 12
+duplicate_hamming_threshold: 10
+min_quality: 0
+enable_apple_vision: true
+scan_landscape_videos: false
+prioritize_people: true
+face_match_threshold: 0.72
+scoring_preset: "People first"
+scoring_weights:
+  people: 30
+  image_quality: 20
+  stability: 14
+  lighting: 10
+  scenic_content: 10
+  uniqueness: 7
+  composition: 4
+  reel_usefulness: 5
